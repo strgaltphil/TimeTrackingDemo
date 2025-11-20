@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="TimeTrackingDemo.ApiService/TimeTrackingDemo.ApiService.csproj" />
+  <Project Path="TimeTrackingDemo.AppHost/TimeTrackingDemo.AppHost.csproj" />
+  <Project Path="TimeTrackingDemo.ServiceDefaults/TimeTrackingDemo.ServiceDefaults.csproj" />
+</Solution>
