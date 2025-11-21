@@ -85,6 +85,12 @@ public static class ShiftEndpoints
         
         group.MapGet("stats/{workerId}/{year}/{month}", async (uint workerId, int year, int month, IQuerySession session) =>
         {
+            if (month is < 1 or > 12)
+                return Results.BadRequest("Month must be between 1 and 12.");
+            
+            if (year < 1900 || year > 2100)
+                return Results.BadRequest("Year must be between 1900 and 2100.");
+            
             var stats = await session.Query<WorkerMonthlyStats>()
                 .Where(x => x.WorkerId == workerId && x.Year == year && x.Month == month)
                 .FirstOrDefaultAsync();
@@ -94,6 +100,12 @@ public static class ShiftEndpoints
         
         group.MapGet("stats/{year}/{month}", async (int year, int month, IQuerySession session) =>
         {
+            if (month is < 1 or > 12)
+                return Results.BadRequest("Month must be between 1 and 12.");
+            
+            if (year < 1900 || year > 2100)
+                return Results.BadRequest("Year must be between 1900 and 2100.");
+            
             var stats = await session.Query<WorkerMonthlyStats>()
                 .Where(x => x.Year == year && x.Month == month)
                 .ToListAsync();
