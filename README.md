@@ -60,7 +60,8 @@ All endpoints are prefixed with `/time-tracking`:
 - `POST /time-tracking/breaks/end` - End a break
 
 ### Statistics
-- `GET /time-tracking/stats/{workerId}/{year}/{month}` - Get monthly statistics
+- `GET /time-tracking/stats/{workerId}/{year}/{month}` - Get monthly statistics for a specific worker
+- `GET /time-tracking/stats/{year}/{month}` - Get monthly statistics for all workers
 
 ### Request Format
 

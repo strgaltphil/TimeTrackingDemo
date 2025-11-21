@@ -91,5 +91,14 @@ public static class ShiftEndpoints
 
             return stats is not null ? Results.Ok(stats) : Results.NotFound("No data.");
         });
+        
+        group.MapGet("stats/{year}/{month}", async (int year, int month, IQuerySession session) =>
+        {
+            var stats = await session.Query<WorkerMonthlyStats>()
+                .Where(x => x.Year == year && x.Month == month)
+                .ToListAsync();
+
+            return Results.Ok(stats);
+        });
     }
 }
