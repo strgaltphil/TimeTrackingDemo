@@ -6,7 +6,7 @@ public class WorkerMonthlyStats
     public uint WorkerId { get; set; }
     public int Year { get; set; }
     public int Month { get; set; }
-    public double TotalHoursWorked { get; set; }
+    public uint TotalMinutesWorked { get; set; }
     
     public DateTimeOffset? LastWorkStartTime { get; set; }
 }

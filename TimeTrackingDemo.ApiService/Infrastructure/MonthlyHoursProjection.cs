@@ -26,7 +26,7 @@ public class MonthlyHoursProjection : MultiStreamProjection<WorkerMonthlyStats, 
     public void Apply(BreakStarted e, WorkerMonthlyStats current)
     {
         if (!current.LastWorkStartTime.HasValue) return;
-        current.TotalHoursWorked += (e.Timestamp - current.LastWorkStartTime.Value).TotalHours;
+        current.TotalMinutesWorked += (uint)(e.Timestamp - current.LastWorkStartTime.Value).TotalMinutes;
         current.LastWorkStartTime = null;
     }
 
@@ -38,7 +38,7 @@ public class MonthlyHoursProjection : MultiStreamProjection<WorkerMonthlyStats, 
     public void Apply(ShiftEnded e, WorkerMonthlyStats current)
     {
         if (!current.LastWorkStartTime.HasValue) return;
-        current.TotalHoursWorked += (e.Timestamp - current.LastWorkStartTime.Value).TotalHours;
+        current.TotalMinutesWorked += (uint)(e.Timestamp - current.LastWorkStartTime.Value).TotalMinutes;
         current.LastWorkStartTime = null;
     }
 }
